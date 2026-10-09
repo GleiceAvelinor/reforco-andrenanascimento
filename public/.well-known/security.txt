@@ -1,0 +1,8 @@
+# security.txt – RFC 9116
+# https://reforcoandrenascimento.com.br/.well-known/security.txt
+
+Contact: https://wa.me/5585985363010
+Preferred-Languages: pt-BR, en
+Canonical: https://reforcoandrenascimento.com.br/.well-known/security.txt
+Policy: https://reforcoandrenascimento.com.br/security-policy
+Expires: 2027-01-01T00:00:00.000Z

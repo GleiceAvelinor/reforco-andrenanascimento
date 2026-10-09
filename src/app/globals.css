@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode (Tailwind CSS v4 requires explicit declaration) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+@layer base {
+  :root {
+    --bg-page: #FFFDF7;
+    --bg-card: #FFFFFF;
+    --text-primary: #18181B;
+    --text-secondary: #52525B;
+    --border-color: #E4E4E7;
+
+    /* Cores da Identidade Visual Oficial (Amarelo, Vermelho Bolso, Azul Caneta, Verde Régua, Laranja Lápis) */
+    --brand-yellow: #FFDE00;
+    --brand-yellow-hover: #EAB308;
+    --brand-yellow-soft: #FEF9C3;
+    --brand-red: #E11D48;
+    --brand-red-hover: #BE123C;
+    --brand-blue: #0284C7;
+    --brand-green: #16A34A;
+    --brand-orange: #F97316;
+  }
+
+  html.dark {
+    --bg-page: #090D16;
+    --bg-card: #131B2E;
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --border-color: #243048;
+
+    --brand-yellow: #FACC15;
+    --brand-yellow-hover: #EAB308;
+    --brand-yellow-soft: #422006;
+    --brand-red: #F43F5E;
+    --brand-red-hover: #E11D48;
+    --brand-blue: #38BDF8;
+    --brand-green: #22C55E;
+    --brand-orange: #FB923C;
+  }
+
+  /* Font size accessibility scaling */
+  html[data-font-size="small"] {
+    font-size: 14px;
+  }
+  html[data-font-size="normal"] {
+    font-size: 16px;
+  }
+  html[data-font-size="large"] {
+    font-size: 18px;
+  }
+  html[data-font-size="xlarge"] {
+    font-size: 20px;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    overflow-x: hidden;
+  }
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting), 'Caveat', cursive;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 3px solid #E11D48 !important;
+  outline-offset: 3px !important;
+  border-radius: 6px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background-color: #FFDE00;
+  color: #18181B;
+  font-weight: 800;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Touch targets >= 48x48px */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
