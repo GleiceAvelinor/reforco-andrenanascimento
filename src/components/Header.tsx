@@ -68,9 +68,9 @@ export default function Header() {
       {/* Top Brand Notification & Accessibility Bar */}
       <aside
         aria-label="Barra de ferramentas de acessibilidade"
-        className="bg-[#FFE600] text-slate-950 font-medium text-xs py-1.5 px-4 border-b border-amber-300 dark:bg-amber-400 transition-colors shadow-xs"
+        className="bg-[#FFE600] text-slate-950 font-medium text-xs py-1.5 border-b border-amber-300 dark:bg-amber-400 transition-colors shadow-xs"
       >
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
           {/* Location Authority */}
           <div className="flex items-center gap-2 font-bold text-slate-950 text-xs">
             <span className="flex items-center">
@@ -171,51 +171,61 @@ export default function Header() {
             {/* Brand Logo */}
             <Link
               href="/"
-              className="group focus-visible:rounded-lg focus-visible:outline-none"
+              className="group focus-visible:rounded-lg focus-visible:outline-none shrink-0"
               aria-label="Acompanhamento Pedagógico André Nascimento - Início"
             >
               <BrandLogo size="md" />
             </Link>
 
-            {/* Desktop Navigation Links (Clean, without duplicate WhatsApp button) */}
-            <nav
-              aria-label="Navegação principal"
-              className="hidden md:flex items-center gap-7 font-bold text-sm"
-            >
-              {navLinks.map((link) => (
+            {/* Desktop Navigation & Actions */}
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+              {/* Navigation Links */}
+              <nav
+                aria-label="Navegação principal"
+                className="flex items-center gap-5 xl:gap-7 font-bold text-sm"
+              >
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-rose-600 dark:hover:border-amber-400 whitespace-nowrap"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+
+              {/* Vertical Divider */}
+              <div className="h-5 w-px bg-slate-200 dark:bg-slate-700 shrink-0" aria-hidden="true" />
+
+              {/* Social & Contact Actions */}
+              <div className="flex items-center gap-3">
                 <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-slate-700 dark:text-slate-200 hover:text-rose-600 dark:hover:text-amber-400 transition-colors py-2 border-b-2 border-transparent hover:border-rose-600 dark:hover:border-amber-400"
+                  href="https://www.instagram.com/reforcoandrenascimento/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-[#E1306C] hover:bg-pink-50 dark:hover:bg-slate-800 transition-all whitespace-nowrap"
+                  aria-label="Acessar Instagram @reforcoandrenascimento"
                 >
-                  {link.label}
+                  <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C] dark:text-pink-400 shrink-0" aria-hidden="true" />
+                  <span>@reforcoandrenascimento</span>
                 </a>
-              ))}
-              <span className="text-slate-400 font-normal">|</span>
-              <a
-                href="https://www.instagram.com/reforcoandrenascimento/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
-                aria-label="Acessar Instagram @reforcoandrenascimento"
-              >
-                <InstagramIcon className="w-3.5 h-3.5 text-[#E1306C] dark:text-pink-400" aria-hidden="true" />
-                @reforcoandrenascimento
-              </a>
-              <span className="text-slate-400 font-normal">|</span>
-              <a
-                href="https://wa.me/5585985363010?text=Ol%C3%A1%21+Vim+pelo+site+do+Acompanhamento+Pedag%C3%B3gico+Andr%C3%A9+Nascimento+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
-              >
-                <Phone className="w-3.5 h-3.5 text-rose-500" aria-hidden="true" />
-                (85) 98536-3010
-              </a>
-            </nav>
+
+                <a
+                  href="https://wa.me/5585985363010?text=Ol%C3%A1%21+Vim+pelo+site+do+Acompanhamento+Pedag%C3%B3gico+Andr%C3%A9+Nascimento+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-amber-100 hover:bg-amber-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-amber-300/80 dark:border-slate-700 transition-all whitespace-nowrap"
+                  aria-label="Ligar ou enviar WhatsApp para (85) 98536-3010"
+                >
+                  <Phone className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" aria-hidden="true" />
+                  <span>(85) 98536-3010</span>
+                </a>
+              </div>
+            </div>
 
             {/* Mobile Menu Toggle Button */}
-            <div className="flex md:hidden items-center">
+            <div className="flex lg:hidden items-center">
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -238,37 +248,37 @@ export default function Header() {
         {mobileMenuOpen && (
           <div
             id="mobile-menu"
-            className="md:hidden border-t border-amber-200 dark:border-slate-800 bg-white dark:bg-[#131B2E] px-4 py-4 shadow-xl animate-in slide-in-from-top-2"
+            className="lg:hidden border-t border-amber-200 dark:border-slate-800 bg-white dark:bg-[#131B2E] px-4 sm:px-6 py-4 shadow-xl animate-in slide-in-from-top-2"
           >
-            <nav aria-label="Navegação móvel" className="flex flex-col space-y-2">
+            <nav aria-label="Navegação móvel" className="flex flex-col space-y-1.5">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={handleNavClick}
-                  className="px-3 py-2.5 rounded-xl text-base font-bold text-slate-800 dark:text-slate-100 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-amber-400 transition"
+                  className="px-3.5 py-2.5 rounded-xl text-base font-bold text-slate-800 dark:text-slate-100 hover:bg-amber-50 dark:hover:bg-slate-800 hover:text-rose-600 dark:hover:text-amber-400 transition"
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-2">
+              <div className="pt-3 mt-2 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row gap-2">
                 <a
                   href="https://www.instagram.com/reforcoandrenascimento/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-800 flex items-center gap-2"
+                  className="flex-1 px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-pink-50 dark:hover:bg-slate-800 hover:text-[#E1306C] flex items-center gap-2.5 transition"
                 >
-                  <InstagramIcon className="w-4 h-4 text-[#E1306C] dark:text-pink-400" aria-hidden="true" />
-                  Instagram: @reforcoandrenascimento
+                  <InstagramIcon className="w-4 h-4 text-[#E1306C] dark:text-pink-400 shrink-0" aria-hidden="true" />
+                  <span>Instagram: @reforcoandrenascimento</span>
                 </a>
                 <a
                   href="https://wa.me/5585985363010?text=Ol%C3%A1%21+Vim+pelo+site+do+Acompanhamento+Pedag%C3%B3gico+Andr%C3%A9+Nascimento+e+gostaria+de+mais+informa%C3%A7%C3%B5es%21"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3 py-2 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-green-50 dark:hover:bg-slate-800 flex items-center gap-2"
+                  className="flex-1 px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-200 bg-slate-50 dark:bg-slate-800/60 hover:bg-emerald-50 dark:hover:bg-slate-800 hover:text-emerald-600 flex items-center gap-2.5 transition"
                 >
-                  <Phone className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                  WhatsApp: (85) 98536-3010
+                  <Phone className="w-4 h-4 text-emerald-500 shrink-0" aria-hidden="true" />
+                  <span>WhatsApp: (85) 98536-3010</span>
                 </a>
               </div>
             </nav>
